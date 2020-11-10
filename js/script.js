@@ -75,8 +75,10 @@ const personalMovieDB = {
 //         console.log('Произошла ошибка');
 //     }
 // } while (i < 2);
-let i = 0;
-while (i < 2) {
+// let i = 0;
+let i = 2;
+while (i) {
+    // while (i < 2) {
     const a = prompt('Один из последних просмотренныхфильмов?', ''),
         b = prompt('На сколько оценете его?', '10.0');
     if (a != null && b != null && a != '' & b != '' && a.length < 50) {
@@ -84,6 +86,7 @@ while (i < 2) {
         console.log('done!');
     } else {
         console.log('error');
+        // break;
         i--; //если условие не выполнилось то возвращаемся на одну итерацию назад
     }
     if (personalMovieDB.count < 10) {
@@ -96,6 +99,7 @@ while (i < 2) {
     } else {
         console.log('Произошла ошибка');
     }
-    i++;
+    // i++;
+    i--;
 }
 console.log(personalMovieDB);
