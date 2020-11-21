@@ -1,39 +1,26 @@
 'use strict';
-let num = 25; //глобальг=ная переменная
-function showFirstMessage(text) {
-    //имя функции должно быть глаголом над чем выполняется действие
-    // есть анонимные функции-они есть сдесь и сейчас, в будущем не используется больше
-    console.log(text);
-    let num = 20; //если переменную мы создаем внутри фунции то вне неё она не доступна(не существует);локальная переменная
-    // let num = 33;
-    console.log(num);
-}
-showFirstMessage('Hello World!');
-console.log(num);
+const str = 'teSt';
 
-// function calc(a, b) {
-//     return (a + b);
-//     //то что после ретор не выполняется \реторн возвращает значения во внешний мир и оканчивает функции
-// }
-// console.log(calc(2, 9));
-// console.log(calc(1, 5));
+const arr = [1, 2, 4];
 
-function ret() {
-    let num = 59;
-    //
-    return num;
-}
-const anotherNum = ret();
-console.log(anotherNum);
+console.log(str.length);
+console.log(arr.length);
+// console.dir();//в консоле браузера показывает все свойтсва обьекта
+console.log(str.toUpperCase());
+console.log(str.toLowerCase());
+const fruit = "Some fruit";
+console.log(fruit.indexOf('fruit')); //узнать с какой позиции нас=чинается fruit
+// три метода изменения строки
 
-const logger = function () {
-    console.log('Hello');
-};
-logger();
-
-// const calc = (a, b) => {
-//     return a+b;
-// };
-// console.log(calc(4,9));
-const calc =a => a+5;//предполагает ретерн сразу- можно не писать аесли со скобками, то необходимо писать реторн
-console.log(calc(9));
+const logg = "Hello Word!";
+console.log(logg.slice(6, 11)); //вырезаем с шестой позиции по 11 включительно
+console.log(logg.slice(6)); //вырезаем с шестой позиции до конца
+console.log(logg.slice(-5, -1)); //вырезаем справа на лево
+console.log(logg.substring(6, 11)); //не поддерживается отрицательные значения одинаковые со slice
+console.log(logg.substr(6, 5)); // сколько символов ннада вырезать(5) -пять после шестого номера слева на право
+// Math.
+const num = 12.2;
+console.log(Math.round(num)); // округление до ближайшего целого
+const test ="12.2px";
+console.log(parseInt(test));//переводит в другую систему исчесления 
+console.log(parseFloat(test));//переводит в другую систему c плавающей точкой
