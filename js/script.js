@@ -1,26 +1,81 @@
+/* Задание на урок:
+
+1) Первую часть задания повторить по уроку
+
+2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
+false - выводит в консоль главный объект программы
+
+3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
+genres
+
+P.S. Функции вызывать не обязательно*/
 'use strict';
-const str = 'teSt';
+let numberOfFilm;
 
-const arr = [1, 2, 4];
+function start() {
+    numberOfFilm = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-console.log(str.length);
-console.log(arr.length);
-// console.dir();//в консоле браузера показывает все свойтсва обьекта
-console.log(str.toUpperCase());
-console.log(str.toLowerCase());
-const fruit = "Some fruit";
-console.log(fruit.indexOf('fruit')); //узнать с какой позиции нас=чинается fruit
-// три метода изменения строки
+    while (numberOfFilm == '' || numberOfFilm == null || isNaN(numberOfFilm)) {
+        //если  не число то возвращает правду, если нет то ложь isNaN(numberOfFilm)
+        numberOfFilm = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+    // если не одно из условий не будет выполненно то вопрос будет повторяться -цикл while
+}
+start();
+const personalMovieDB = {
+    count: numberOfFilm,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
 
-const logg = "Hello Word!";
-console.log(logg.slice(6, 11)); //вырезаем с шестой позиции по 11 включительно
-console.log(logg.slice(6)); //вырезаем с шестой позиции до конца
-console.log(logg.slice(-5, -1)); //вырезаем справа на лево
-console.log(logg.substring(6, 11)); //не поддерживается отрицательные значения одинаковые со slice
-console.log(logg.substr(6, 5)); // сколько символов ннада вырезать(5) -пять после шестого номера слева на право
-// Math.
-const num = 12.2;
-console.log(Math.round(num)); // округление до ближайшего целого
-const test ="12.2px";
-console.log(parseInt(test));//переводит в другую систему исчесления 
-console.log(parseFloat(test));//переводит в другую систему c плавающей точкой
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+            b = prompt('На сколько оцените его?', '');
+
+        if (a != null && b != null && a != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }
+    }
+}
+rememberMyFilms();
+
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log('Просмотренно довольно мало фильмов');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+        console.log('Вы класический зритель');
+    } else if (personalMovieDB.count >= 30) {
+        console.log('Вы киноман');
+    } else {
+        console.log('Произошла ошибка');
+    }
+}
+detectPersonalLevel();
+
+function showMyDB(hidden) {
+    // if (personalMovieDB.privat == false) {
+    if (!hidden) { //если база данных не скрыто то выполняется !hidden=false hidden=true
+        console.log(personalMovieDB);
+    }
+}
+showMyDB(personalMovieDB.privat);
+
+function writeYourGenres() {
+    for (let i = 1; i <= 3; i++) {
+        // const genre = prompt(`Ваш любимый жанр под номером ${i}`, '');
+        // personalMovieDB.genres[i - 1] = genre;
+        // console.log(genre);
+        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`, '');
+    }
+}
+writeYourGenres();
+
+// Код возьмите из предыдущего домашнего задания
